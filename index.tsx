@@ -1,11 +1,11 @@
-// Authors: Bluscream, Cursor.AI
-// Created at 2025-12-20 14:33:15
-/*
- * Vencord, a Discord client mod
- * Copyright (c) 2025 Vendicated and contributors
- * SPDX-License-Identifier: GPL-3.0-or-later
- */
+export const pluginInfo = {
+    id: "guildInviteSaver",
+    name: "GuildInviteSaver",
+    description: "Automatically collects and saves invite links before leaving a guild",
+    color: "#7289da"
+};
 
+// Created at 2025-12-20 14:33:15
 import { NavContextMenuPatchCallback } from "@api/ContextMenu";
 import { registerSharedContextMenu } from "./utils/menus";
 import { definePluginSettings } from "@api/Settings";
@@ -16,9 +16,7 @@ import { sendMessage } from "@utils/discord";
 
 import { Logger } from "@utils/Logger";
 
-const pluginId = "guildInviteSaver";
-const pluginName = "Guild Invite Saver";
-const logger = new Logger(pluginName, "#7289da");
+const logger = new Logger(pluginInfo.name, pluginInfo.color);
 
 const settings = definePluginSettings({
     autoBackupOnLeave: {
@@ -533,7 +531,6 @@ export default definePlugin({
             }
         }
     ],
-
 
     stopCleanup: null as (() => void) | null,
     start() {
